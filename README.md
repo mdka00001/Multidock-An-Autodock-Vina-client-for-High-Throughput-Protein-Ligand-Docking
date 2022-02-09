@@ -21,7 +21,7 @@ Installing 'pathlib':
  6. Press Enter
 
  Coded and written by- 
- Md Adnan Karim 
- MS Bioinformatics
- Universität des Saarlandes
+ Md Adnan Karim \
+ MS Bioinformatics\
+ Universität des Saarlandes\
  (mdka00001@stud.uni-saarland.de)
