@@ -1,10 +1,10 @@
 # Multidock-An-Autodock-Vina-client-for-High-Throughput-Protein-Ligand-Docking
-Multidock: An Autodock Vina client for High Throughput Protein-Ligand Docking
 
-# Pre-requisits: Make sure Python 3.7 (or higher) version is installed in the system.
-  'pathlib' module needs to installed. It is advised to use virtual environment(e.g: conda) #
+# Pre-requisits: 
+ Make sure Python 3.7 (or higher) version is installed in the system.
+'pathlib' module needs to installed. It is advised to use virtual environment(e.g: conda) #
  
-Installing 'pathlib':
+#Installing 'pathlib':
  
   Without conda environment: "pip install pathlib"
   
@@ -12,13 +12,16 @@ Installing 'pathlib':
 
 
 
- Please follow the steps:
+ #Please follow the steps:
  1. Copy all the ligand (pdbqt files) in a folder
  2. Copy 'config.txt' and receptor (pdbqt files) in another subfolder
  3. Do not specify ligand molecule in config file
  4. Run 'script.py'   from the sub-folder containing receptor and config files
  5. Insert location of the ligands
- 6. Press Enter
+ 6. Enter the name of 'Receptor' file
+ 7. Enter the number of iterations for each ligand 
+ 8. Press Enter 
+ 9. Folders with ligans name will contain outputs for each iteration
 
  Coded and written by- 
  Md Adnan Karim \
