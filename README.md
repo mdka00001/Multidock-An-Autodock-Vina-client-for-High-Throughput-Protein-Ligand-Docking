@@ -1,4 +1,4 @@
-# Multidock-An-Autodock-Vina-client-for-High-Throughput-Protein-Ligand-Docking
+# Multidock: An Autodock Vina Client for High Throughput Protein Ligand Docking
 
 # Pre-requisits: 
  Make sure Python 3.7 (or higher) version is installed in the system.
