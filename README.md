@@ -16,12 +16,15 @@
  1. Copy all the ligand (pdbqt files) in a folder
  2. Copy 'config.txt' and receptor (pdbqt files) in another subfolder
  3. Do not specify ligand molecule in config file
- 4. Run 'script.py'   from the sub-folder containing receptor and config files
+ 4. Run 'multidock.py' from the sub-folder containing receptor and config files
  5. Insert location of the ligands
  6. Enter the name of 'Receptor' file
  7. Enter the number of iterations for each ligand 
  8. Press Enter 
  9. Folders with ligans name will contain outputs for each iteration
+
+ #  Use the following command to run python script in cmd (in user directory)
+ "python multidock.py"
 
  # Coded by- 
  Md Adnan Karim \
