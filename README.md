@@ -1,4 +1,5 @@
 # Multidock: An Autodock Vina Client for High Throughput Protein Ligand Docking
+ Multidock is a third-party api developed for Autodock Vina to run docking with multiple ligand. This api uses an iterative approach for docking where the users can dock "n"   number of ligands "m" times. This api also calculates the average of best scores for "m" number of dockings of each ligand.
 
 # Pre-requisits: 
  Make sure Python 3.7 (or higher) version is installed in the system.
