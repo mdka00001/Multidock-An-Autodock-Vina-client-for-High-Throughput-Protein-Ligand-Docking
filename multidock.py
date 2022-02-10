@@ -64,7 +64,7 @@ for i in os.listdir(path):
 
 print("\nDocking has been completed\n\n")
 
-outro="Coded by-\n\
+outro="Coded by- \n\
 Md Adnan Karim\n\
 MS Bioinformatics\n\
 Universität des Saarlandes\n\
