@@ -2,6 +2,7 @@
 
 import os
 import subprocess
+import statistics as sp
 from pathlib import Path
 
 intro="\nMultidock: An Autodock Vina client for High Throughput Protein-Ligand Docking\n\n\
@@ -19,16 +20,16 @@ Please follow the steps:\n\
 9. Folders with ligans name will contain outputs for each iteration\n\n\n"
 
 print(intro)
-print("Insert location of the ligands:")
-f=input()
+
+f=input("Insert location of the ligands: ")
 
 #insert receptor file name
-print("Insert receptor file name:")
-receptor=input()
+
+receptor=input("Insert receptor file name: ")
 
 #insert number of iteration for each ligand
-print("insert number of iteration for each ligand:")
-st=input()
+
+st=input("insert number of iteration for each ligand: ")
 
 itr=int(st)
 
@@ -37,12 +38,17 @@ path=Path(f)
 #location of vina.exe
 vina='"C:\Program Files (x86)\The Scripps Research Institute\Vina\\vina.exe"'
 
-
+#Calculating average and standard deviation for each ligand after n iterations
+lig_list=[]
+mn=[]
+std=[]
 
 for i in os.listdir(path):
 
   #for output file naming purpose
   lig=i.split(".")
+  scores=[]
+  lig_list.append(lig[0])
 
   if not os.path.exists(lig[0]):
     os.mkdir(lig[0])
@@ -59,15 +65,45 @@ for i in os.listdir(path):
 
     #command to be executed
     s=" --receptor "+receptor+" --ligand "+"ligand/"+i+" "+"--config config.txt "+"--log "+output_dir+"/"+lig[0]+".txt "+"--out "+output_dir+"/"+"output_"+i
-    #print(vina+s)
+    
     os.system(vina+s)
 
-print("\nDocking has been completed\n\n")
+    #reading output.txt file
+    tx_file=open(output_dir+"/"+lig[0]+".txt")
 
-outro="Coded by- \n\
+    #Selecting best dock score
+    content = tx_file.readlines()[26].split()
+
+
+    scores.append(float(content[1]))
+    
+  #calculating average and stdev
+  mn.append(sum(scores)/len(scores))
+  std.append(sp.stdev(scores))
+
+
+
+
+print("\nDocking has been completed\n\nDocking socre summary after %d iteration:\n" % itr)
+
+final_results=[]
+for k in range(0,len(lig_list)):
+  s=("%s Average: %f±%f"%(lig_list[k],mn[k],std[k]))
+  final_results.append(s)
+  print("%s\n"%s)
+
+
+
+outro="\n\nCoded by- \n\
 Md Adnan Karim\n\
 MS Bioinformatics\n\
 Universität des Saarlandes\n\
 mdka00001@stud.uni-saarland.de\n"
 
 print(outro)
+
+#Final output as text file
+with open('Score_average.txt', 'w') as f:
+    for line in final_results:
+        f.write(line)
+        f.write('\n')
