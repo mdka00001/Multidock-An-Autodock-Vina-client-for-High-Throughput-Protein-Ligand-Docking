@@ -39,6 +39,7 @@ path=Path(f)
 vina='"C:\Program Files (x86)\The Scripps Research Institute\Vina\\vina.exe"'
 
 #Calculating average and standard deviation for each ligand after n iterations
+best_vals=[]
 lig_list=[]
 mn=[]
 std=[]
@@ -65,7 +66,7 @@ for i in os.listdir(path):
 
     #command to be executed
     s=" --receptor "+receptor+" --ligand "+"ligand/"+i+" "+"--config config.txt "+"--log "+output_dir+"/"+lig[0]+".txt "+"--out "+output_dir+"/"+"output_"+i
-    
+    #print(vina+s)
     os.system(vina+s)
 
     #reading output.txt file
@@ -78,6 +79,7 @@ for i in os.listdir(path):
     scores.append(float(content[1]))
     
   #calculating average and stdev
+  best_vals.append(scores)
   mn.append(sum(scores)/len(scores))
   std.append(sp.stdev(scores))
 
@@ -88,7 +90,7 @@ print("\nDocking has been completed\n\nDocking socre summary after %d iteration:
 
 final_results=[]
 for k in range(0,len(lig_list)):
-  s=("%s Average: %f±%f"%(lig_list[k],mn[k],std[k]))
+  s=("%s Best Scores: %s Average: %f±%f"%(lig_list[k],best_vals[k],mn[k],std[k]))
   final_results.append(s)
   print("%s\n"%s)
 
